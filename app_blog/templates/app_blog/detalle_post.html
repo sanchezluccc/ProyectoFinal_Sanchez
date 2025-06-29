@@ -1,0 +1,59 @@
+{% extends 'app_blog/base.html' %}
+
+{% block title %}{{ post.titulo }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- Detalle del post -->
+  <div class="mb-5">
+    <h2 class="fw-bold">{{ post.titulo }}</h2>
+    <p class="text-muted">Por <strong>{{ post.autor.nombre }}</strong> | Publicado el {{ post.fecha_publicacion|date:"d M Y" }}</p>
+    <div class="border rounded p-4 bg-light shadow-sm">
+      <p>{{ post.contenido }}</p>
+    </div>
+  </div>
+
+  <!-- Comentarios -->
+  <div class="mb-5">
+    <h3 class="mb-3">Comentarios</h3>
+    {% if comentarios %}
+      <ul class="list-group">
+        {% for comentario in comentarios %}
+          <li class="list-group-item">
+            <p class="mb-1"><strong>{{ comentario.nombre_usuario }}</strong> comentó:</p>
+            <p class="mb-1">{{ comentario.texto }}</p>
+            <small class="text-muted">{{ comentario.fecha }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="alert alert-info">No hay comentarios aún.</div>
+    {% endif %}
+  </div>
+
+  <!-- Formulario para comentar -->
+  <div class="mb-5">
+    <h3 class="mb-3">Agregar un comentario</h3>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="mb-3">
+              <label class="form-label">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
+                <div class="text-danger small">{{ field.errors }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Enviar comentario</button>
+          <a href="{% url 'inicio' %}" class="btn btn-outline-secondary ms-2">Volver</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'app_blog/base.html' %}
+
+{% block title %}Inicio - Zetta{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- Bloque de bienvenida -->
+  <div class="p-4 mb-5 rounded-3 text-center shadow-lg" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white;">
+    <h2 class="fw-bold">¡Bienvenido a Zetta!</h2>
+    <p class="fs-5 mt-3">
+      Un espacio para amantes de la música donde podés compartir tus ideas, debatir sobre artistas y géneros, y escribir tus propios posteos.
+    </p>
+    <p class="fs-6">
+      Registrate como autor y participá comentando las publicaciones de otros miembros. Zetta es una comunidad abierta y respetuosa, donde la pasión por la música nos conecta.
+    </p>
+    <hr class="my-3" style="border-color: rgba(255, 255, 255, 0.4);">
+    <p class="fs-6 mb-0">Explorá, comentá y compartí tus pensamientos con nuestra comunidad.</p>
+  </div>
+
+  <!-- Bloque de últimos posts -->
+  <h2 class="mb-4 text-primary border-bottom pb-2">Últimos Posts</h2>
+  <div class="row">
+    {% if posts %}
+      {% for post in posts %}
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm border-0 rounded-3">
+            <div class="card-body">
+              <h5 class="card-title text-secondary">{{ post.titulo }}</h5>
+              <h6 class="card-subtitle mb-3 text-muted fst-italic">Por {{ post.autor.nombre }}</h6>
+              <p class="card-text">{{ post.contenido|truncatewords:30 }}</p>
+              <a href="{% url 'detalle_post' post.id %}" class="btn btn-outline-primary rounded-pill px-4">Leer más</a>
+            </div>
+            <div class="card-footer text-muted bg-white border-0 fst-italic">
+              Publicado el {{ post.fecha_publicacion|date:"d M Y" }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-muted fst-italic">No hay posts disponibles.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

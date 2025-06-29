@@ -1,0 +1,48 @@
+{% extends 'app_blog/base.html' %}
+
+{% block title %}Buscar Posts{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <!-- Título -->
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">Buscar Posts</h2>
+    <p class="text-muted">Encontrá publicaciones por título o palabra clave</p>
+  </div>
+
+  <!-- Formulario de búsqueda -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <form method="get" class="row g-3">
+        <div class="col-md-10">
+          {{ form.titulo.label_tag }}
+          {{ form.titulo }}
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  {% if form.is_bound %}
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title mb-3">Resultados:</h4>
+        {% if posts %}
+          <ul class="list-group">
+            {% for post in posts %}
+              <li class="list-group-item">
+                <strong>{{ post.titulo }}</strong> — por {{ post.autor.nombre }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted">No se encontraron resultados.</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

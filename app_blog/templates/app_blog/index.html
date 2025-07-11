@@ -27,7 +27,7 @@
           <div class="card h-100 shadow-sm border-0 rounded-3">
             <div class="card-body">
               <h5 class="card-title text-secondary">{{ post.titulo }}</h5>
-              <h6 class="card-subtitle mb-3 text-muted fst-italic">Por {{ post.autor.nombre }}</h6>
+              <h6 class="card-subtitle mb-3 text-muted fst-italic">Por {{ post.autor.username }}</h6>
               <p class="card-text">{{ post.contenido|truncatewords:30 }}</p>
               <a href="{% url 'detalle_post' post.id %}" class="btn btn-outline-primary rounded-pill px-4">Leer más</a>
             </div>

@@ -1,0 +1,10 @@
+{% extends 'app_blog/base.html' %}
+
+{% block title %}Has cerrado sesión{% endblock %}
+
+{% block content %}
+<div class="alert alert-info text-center">
+    <h3>Has cerrado sesión correctamente.</h3>
+    <a href="{% url 'inicio' %}" class="btn btn-primary mt-3">Volver al inicio</a>
+</div>
+{% endblock %}

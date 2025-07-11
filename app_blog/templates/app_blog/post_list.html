@@ -8,7 +8,7 @@
   <h2>Posts</h2>
   <ul>
     {% for post in posts %}
-      <li><a href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a> - {{ post.autor.nombre }}</li>
+      <li><a href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a> - {{ post.autor.username }}</li>
     {% endfor %}
   </ul>
 {% endblock %}

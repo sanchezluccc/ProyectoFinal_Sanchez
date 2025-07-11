@@ -22,7 +22,8 @@
         .navbar-custom .nav-link {
             color: white !important;
         }
-        .navbar-custom .nav-link:hover {
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .dropdown-item:hover {
             text-decoration: underline;
         }
         .footer {
@@ -42,7 +43,33 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_autor' %}">Registrate</a></li>
+
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPerfil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hola, {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPerfil">
+                                <li><a class="dropdown-item" href="{% url 'perfil' %}">Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cambiar_password' %}">Cambiar Contraseña</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registro' %}">Registrate</a>
+                        </li>
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'crear_post' %}">Crear Post</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'crear_comentario' %}">Comentar</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'buscar_post' %}">Buscar posts</a></li>
@@ -50,15 +77,16 @@
             </div>
         </div>
     </nav>
+
     <!-- Banner principal -->
-<div class="banner-container mb-4">
-  <div class="bg-dark text-white text-center py-5" style="background-image: url('{% static 'app_blog/img/banner.jpg' %}'); background-size: cover; background-position: center;">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Zetta - Comunidad Musical</h1>
-      <p class="lead">Compartí tus ideas, descubrí nuevos artistas y conectá con otros amantes de la música</p>
+    <div class="banner-container mb-4">
+      <div class="bg-dark text-white text-center py-5" style="background-image: url('{% static 'app_blog/img/banner.jpg' %}'); background-size: cover; background-position: center;">
+        <div class="container">
+          <h1 class="display-4 fw-bold">Zetta - Comunidad Musical</h1>
+          <p class="lead">Compartí tus ideas, descubrí nuevos artistas y conectá con otros amantes de la música</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="container">

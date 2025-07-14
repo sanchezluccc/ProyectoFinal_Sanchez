@@ -37,6 +37,10 @@ Zetta es una plataforma web tipo comunidad para amantes de la música, donde los
    pip install -r requirements.txt
 
 ---
+## 🎥 Demo
+Mirá una demostración del sitio en funcionamiento:
+
+[Ver video de demostración](demo/demo_zetta.mp4)
 
 ## Autor
 Lucas Sanchez

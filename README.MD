@@ -38,9 +38,9 @@ Zetta es una plataforma web tipo comunidad para amantes de la música, donde los
 
 ---
 ## 🎥 Demo
-Mirá una demostración del sitio en funcionamiento:
+Podés ver una demostración del sitio funcionando en el siguiente enlace:
 
-[Ver video de demostración](demo/demo_zetta.mp4)
+👉 [Ver demo en Google Drive] https://drive.google.com/file/d/1hVvM5MH1LCCx0EK8OgU1RoBxzBq2Ncod/view?usp=drive_link
 
 ## Autor
 Lucas Sanchez

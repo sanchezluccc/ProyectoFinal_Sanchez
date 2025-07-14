@@ -7,3 +7,5 @@ db.sqlite3
 
 # Ignorar carpeta media donde se suben archivos
 media/
+
+demo/demo_zetta.mp4

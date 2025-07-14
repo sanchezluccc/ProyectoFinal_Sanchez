@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 class LoginRequiredMessageMixin(AccessMixin):
-    login_url = 'login'  # nombre de la url de login
+    login_url = 'login'  
     message = "Para acceder a esta página debes iniciar sesión."
 
     def dispatch(self, request, *args, **kwargs):

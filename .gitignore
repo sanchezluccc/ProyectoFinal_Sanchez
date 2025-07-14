@@ -1,0 +1,9 @@
+# Ignorar carpetas de Python compiladas
+__pycache__/
+*.pyc
+
+# Ignorar base de datos SQLite
+db.sqlite3
+
+# Ignorar carpeta media donde se suben archivos
+media/

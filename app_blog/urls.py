@@ -3,7 +3,7 @@ from . import views
 from .views import (
     login_view, logout_view, register_view,
     index, CrearPostView, CrearComentarioView,
-    buscar_post, detalle_post
+    buscar_post, detalle_post, quienes_somos
 )
 
 
@@ -22,6 +22,7 @@ urlpatterns = [
     path('', views.index, name='inicio'),  
     path('post/<int:post_id>/editar/', views.editar_post, name='editar_post'),
     path('post/<int:post_id>/borrar/', views.borrar_post, name='borrar_post'),
+    path('quienes-somos/', quienes_somos, name='quienes_somos'),
 
 ]
     

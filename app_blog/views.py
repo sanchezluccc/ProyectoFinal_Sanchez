@@ -188,7 +188,7 @@ from .models import Post
 def editar_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
 
-    # Verificar que el usuario sea el autor
+    
     if post.autor != request.user:
         return HttpResponseForbidden("No tienes permiso para editar este post.")
 
@@ -207,7 +207,7 @@ def editar_post(request, post_id):
 def borrar_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
 
-    # Verificar que el usuario sea el autor
+    
     if post.autor != request.user:
         return HttpResponseForbidden("No tienes permiso para borrar este post.")
 
@@ -216,3 +216,6 @@ def borrar_post(request, post_id):
         return redirect('inicio')
 
     return render(request, 'app_blog/confirmar_borrado.html', {'post': post})
+
+def quienes_somos(request):
+    return render(request, 'app_blog/quienes_somos.html')
